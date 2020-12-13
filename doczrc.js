@@ -1,0 +1,28 @@
+export default {
+  typescript: true,
+  menu: [
+    'Welcome',
+    'How It Works',
+    'Getting Started',
+    'Available Scripts',
+    'Development',
+    'Technologies',
+    'Project Structure',
+    'Customization',
+    'Layouts',
+    'Styles and Assets',
+    'Utilities',
+    'Internationalization',
+    {
+      name: 'Back-End Integration',
+      menu: ['API integration', 'Data Fetching'],
+    },
+    'Deployment',
+    { name: 'SEO and Analytics', menu: ['SEO', 'Analytics'] },
+    { name: 'Components', menu: ['Alert', 'Button'] },
+    'Resources',
+    'FAQ',
+    'Support',
+    'Versions',
+  ],
+};
