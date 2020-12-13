@@ -1,0 +1,74 @@
+---
+name: Overview
+route: /overview
+---
+
+# Overview
+
+Isomorphic Comes With multiple boilerplate and configurations for different use cases.
+
+1. isomorphic (build with custom CRA)
+2. isomorphic-next (SSR supported by next.js)
+3. isomorphic-boilerplate ( if Anyone want to use with monorepo and custom CRA )
+4. isomorphic-boilerplate-single (If Anyone want to use isomorphic without monorepo)
+5. isomorphic-boilerplate-graphql (CRA with GraphQL server and client)
+6. isomorphic-servers (example: of different backend integration)
+
+## How we utilize monorepo structure
+By using monorepo we simplified `import`
+
+```
+import Component from '../../components/Component'
+import ContainerComponent from '../../../containers/ContainerComponent'
+
+to
+
+import Component from '@iso/components/Component'
+import ContainerComponent from '@iso/containers/ContainerComponent'
+```
+
+Reuse `components` , `containers`, `redux`, `assets` , `config` between all our `packages`.By moving them in `shared` folder and setup with monorepo. to import things from there you just prefix with `@iso/folderName`
+
+example:
+
+```
+shared/assets ==> @iso/assets
+
+shared/components ==> @iso/components/required_component_path
+```
+
+We also move common things like library and ui within `shared/UI and shared/library`
+
+To use them you just need to import things from
+
+```
+shared/library ==> @iso/lib
+
+shared/UI ==> @iso/ui
+```
+
+## If you don't want to use monorepo in next version
+
+Note: React dashboard version non monorepo is already available in the isomorphic directory check the next section for more informaiton
+
+we didn't provide any without monorepo support for isomorphic-next but you can easily made your own by adding some configurations within `next.config.js` file like:
+
+```
+ config.resolve.alias = {
+      ...config.resolve.alias,
+      // Will make webpack look for these modules in parent directories
+      '@iso/assets': require.resolve('shared/assets'),
+      '@iso/config': require.resolve('shared/config'),
+      '@iso/components': require.resolve('shared/components'),
+      '@iso/containers': require.resolve('shared/containers'),
+      '@iso/lib': require.resolve('shared/library'),
+      '@iso/ui': require.resolve('shared/UI'),
+    };
+```
+
+Also
+
+**you need to move all the folders from shared within your project folder.**
+
+
+
