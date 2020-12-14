@@ -8,6 +8,11 @@ export default {
         "Non Monorepo Structure",
         "Monorepo Packages Structure",
         "Getting Started",
+        "AsyncComponent",
+        {
+            name: "Components",
+            menu: ["Shop (Algolia)", "Authentication"],
+        },
         "Available Scripts",
         "Development",
         "Technologies",

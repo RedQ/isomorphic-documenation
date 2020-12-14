@@ -1,0 +1,60 @@
+---
+name: AsyncComponent
+route: /async-component
+---
+
+# AsyncComponent
+
+Isomorphic supports `AsyncComponent`. All the component being used in this app are based on `React Router 4`. Using `asyncComponent` provide you the facility to `Asynchronously` load components and feed them into `Match on route changes.`
+
+you will find the `asyncComponentrelated` function and necessary code from the below file
+
+> To find out the code of asyncComponentrelated router, please go to your-apps-root-path/src/containers/App/AppRouter.js
+
+> To find out the code of asyncComponentrelated function, please go to your-apps-root-path/src/helpers/AssyncFunc.js
+
+The Basic Route Component for The Widgets,
+
+```
+<Route
+  exact
+  path={`${url}/`}
+  component={asyncComponent(() => import('../widgets/index.js'))}
+/>
+```
+
+The `asyncComponent` function
+
+```
+export default function asyncComponent(importComponent) {
+  class AsyncFunc extends Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+        component: null,
+      };
+    }
+    componentWillMount() {
+      Nprogress.start();
+    }
+    async componentDidMount() {
+      const { default: Component } = await importComponent();
+      Nprogress.done();
+      this.setState({
+        component: <Component {...this.props} />,
+      });
+    }
+
+    render() {
+      console.log(this.state.component, 'insided');
+      const configs = {
+        Component: this.state.component,
+        props: this.props,
+        holderComponent: 'asyncFunc',
+      };
+      return <HolderComponent {...configs} />;
+    }
+  }
+  return AsyncFunc;
+}
+```
