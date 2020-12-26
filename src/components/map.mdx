@@ -1,0 +1,95 @@
+---
+name: Map
+route: /map
+menu: Components
+---
+
+# Map
+
+```
+Folder path: /src/containers/map/GoogleMap
+```
+
+If you want to render a map like the following image
+
+Then The code should be like this.
+
+```jsx
+<GoogleMapReact
+            defaultZoom={this.props.zoom}
+            bootstrapURLKeys={{
+              key: API_KEY,
+            }}
+            onBoundsChange={this.boundsChange}
+            onChildClick={this.childClick}
+            center={this.state.center}
+            distanceToMouse={this.distanceToMouse}
+          >
+            {this.state.posts.length ? this.state.posts.map(this.allMarkers) : null}
+          </GoogleMapReact>
+```
+
+Where,
+
+| Parameter      | Type | 	Keys/Parameters |  Description |
+| ----------- | ----------- | ----------- |
+| center      | Object       | lat and lng	       | Center of the Map |
+| defaultZoom      | Integer       |        | Default zoom level |
+| onChildClick      | Function       | key, childProps       |  Marker click callback functionbootstrapURLKeys |
+| bootstrapURLKeys      | Object       | API_KEY       |  Google Map API Key |
+| onBoundsChange      | Function       | key, childProps       |  Callback function for changing map bound |
+
+
+For Custom marker design, You can edit the following part of code of `marker.js`
+
+
+```jsx
+<div className="isoMarkerInfoWindow">
+  <div className="">
+    <div>
+      <i className={`${markerIcon}`}></i>
+    </div>
+  </div>
+  <div>
+    {props.infoWindow !== null ? openInfoWindow() : null}
+  </div>
+</div>
+```
+
+For Custom Infowindow Design you can edit the following code portion of `marker.js`.
+
+```jsx
+const openInfoWindow = () => {
+    const { infoWindow, item } = props;
+    if (item.ID !== infoWindow.ID)
+      return;
+    return (
+        <div className="isoInfoWindow">
+          <div className="isoInfoWindowImage">
+            <img alt="#" src={infoWindow.img}/>
+          </div>
+          <div className="isoInfoWindowDetails">
+            <h3 className="isoHeading">{infoWindow.title}</h3>
+            <p className="isoLocation">{infoWindow.location}</p>
+          </div>
+          <button className="windowCloseBtn" onClick={()=> props.closeInfoWindow()}>
+            <i className="ion-android-close"></i>
+          </button>
+        </div>
+      )
+  };
+```
+
+You can insert post data in the file name config.js
+
+An array of posts will have to be provided. A single Post will have the following keys.
+
+| Keys     | Type | Parameter |  Description |
+| ----------- | ----------- | ----------- |
+| Header      | Title       | Title       |  Title       |
+| Header      | Title       | Title       |  Title       |
+| Header      | Title       | Title       |  Title       |
+| Header      | Title       | Title       |  Title       |
+| Header      | Title       | Title       |  Title       |
+| Header      | Title       | Title       |  Title       |
+| Header      | Title       | Title       |  Title       |
