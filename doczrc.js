@@ -11,7 +11,7 @@ export default {
         "AsyncComponent",
         {
             name: "Components",
-            menu: ["Shop (Algolia)", "Authentication"],
+            menu: ["Shop (Algolia)", "Authentication", "UI Elements"],
         },
         "Available Scripts",
         "Development",
