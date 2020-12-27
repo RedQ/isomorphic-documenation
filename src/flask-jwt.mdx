@@ -1,0 +1,59 @@
+---
+name: Flask JWT
+route: /flask-jwt
+---
+
+# Flask JWT
+
+In the root folder you will get a folder named servers in the servers folder you will get a folder named `flask`. The structure of the folder is below
+
+![flask1.png](../images/flask1.png)
+
+Here You can see the folder the structure where the `app.py` is the file where all the routes are defined and in the resources.py file the functionality of the routes.
+
+To start the server run the below command
+
+```
+FLASK_APP=app.py FLASK_DEBUG=1 flask run --port=9000
+```
+
+It will run the server in the localhost `port 9000`
+
+![flask2.png](../images/flask2.png)
+
+### We have the below routes
+
+```python
+api.add_resource(resources.UserLogin, '/api/login')
+api.add_resource(resources.TokenRefresh, '/refresh')
+# Secret Route
+api.add_resource(resources.SecretResource, '/api/secret/test')
+```
+
+Login route generate the token.
+
+To modify how you want your user to get their token modify the below function in the `resources.py`
+
+```python
+class UserLogin(Resource):
+    def post(self):
+        data = parser.parse_args()
+        # Just add any model and you can then check database User
+        # current_user = UserModel.find_by_username(data['username'])
+        # static user
+        current_user = {
+            'username': 'demo@gmail.com',
+            'password': 'demodemo'
+        }
+
+        if not current_user:
+            return {'message': 'User {} doesn\'t exist'.format(data['username'])}
+
+        if data['username'] == current_user['username'] and data['password'] == current_user['password']:
+            access_token = create_access_token(identity=data['username'])
+            return {
+                'token': access_token,
+            }
+        else:
+            return {'message': 'Wrong credentials'}
+```

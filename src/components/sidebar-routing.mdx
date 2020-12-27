@@ -1,0 +1,34 @@
+---
+name: Sidebar & Routing
+route: /sidebar-routing
+menu: Components
+---
+
+# Sidebar & Routing
+
+Code: Add the code below in `src/containers/Sidebar/Sidebar.js` in between `<Menu>` Component. to add a new menu item in the sidebar.
+
+```jsx
+// Add New Menu
+<Menu.Item key="email">
+  <Link to={`${url}/newmenu`}>
+    <span className="isoMenuHolder">
+      <i className="ion-android-mail" />
+      <span className="nav-text">New Menu</span>
+    </span>
+  </Link>
+</Menu.Item>
+```
+
+For Routing the menu now add the below code to the src/containers/App/AppRouter.js file. and add a New Component which will render when you click on the menu.
+
+Code:
+
+```jsx
+//menu routes
+<Route
+    exact
+    path={`${url}/mailbox`}
+    component={asyncComponent(() => import('path to NewMenuComponent'))}
+/>
+```

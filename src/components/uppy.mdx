@@ -1,0 +1,114 @@
+---
+name: Uppy
+route: /uppy
+menu: Components
+---
+
+# Uppy
+
+Uppy is file uploader solution which work can be integrated with any framework. It ha functionalities to upload files from local disk, Google Drive, Dropbox, Instagram, remote URLs, cameras etc.
+
+For more introduction visit their website https://uppy.io/
+
+Now, Lets move on with our Isomorphic app and Uppy Integration.
+
+We divide our Uppy Integration into 3 steps.
+
+1. UI Layer
+2. Configuration
+3. Scripting
+
+### UI Layer :
+
+Code location : `newdashapp/src/containers/AdvancedUI/uppy/index.js`
+
+Code Integration :
+
+```jsx
+<LayoutWrapper>
+  <PageHeader>Uppy</PageHeader>
+  <Box>
+    <ContentHolder>
+      <div id="uppyHolder" />
+    </ContentHolder>
+  </Box>
+</LayoutWrapper>
+```
+
+Here, ***<div id="uppyHolder" />*** is the main concern. To integrate Uppy in any UI section you need to declare a div with ID which contains the Uppy UI Holder.
+
+### Configuration :
+
+Code Location : `newdashapp/src/containers/AdvancedUI/uppy/config.js`
+
+Code Integration :
+
+```jsx
+const config = {
+  target: '#uppyHolder',
+  // trigger: '#UppyModalOpenerBtn',
+  endpoint: 'fakeServer',
+  DashboardInline: true,
+  Webcam: true,
+  GoogleDrive: true,
+  Dropbox: true,
+  Instagram: true,
+  autoProceed: false,
+  restrictions: {
+    maxFileSize: 1000000,
+    maxNumberOfFiles: 3,
+    minNumberOfFiles: 2,
+    allowedFileTypes: ['image/*', 'video/*']
+  },
+  metaFields: [
+    {
+      id: 'resizeTo',
+      name: 'Resize to',
+      value: 1200,
+      placeholder: 'specify future image size'
+    },
+    {
+      id: 'description',
+      name: 'Description',
+      value: 'none',
+      placeholder: 'describe what the file is for'
+    }
+  ]
+};
+export default config;
+```
+
+Code Explanation :
+
+|Code (Key)|Parameter Type|Description|
+|--- |--- |--- |
+|target|string|id of the `<div>` which render the Uppy UI Layer|
+|endpoint|string|server connection url|
+|trigger|string|Modal View Opener|
+|DashboardInline|boolean|To show the Uppy Dashboard in current page or not|
+|Webcam|boolean|To use file uploader from webcam|
+|GoogleDrive|boolean|To use file upload from GoogleDrive|
+|Dropbox|boolean|To use file upload from Dropbox|
+|Instagram|boolean|To use file upload from instagram|
+|autoProceed|boolean|Control the direct upload or not|
+|maxFileSize (restrictions)|numeric value|Control the maximum file upload size|
+|maxNumberOfFile (restrictions)|numeric value|control the maximum number of file upload at a time|
+|minNumberOfFile (restrictions)|numeric value|Control the minimum number of file upload at a time|
+|allowedFileTypes|array|contains the file types allowed to be uploaded. Example: image, video, xml etc|
+|id (metaFields)|string|id of the field after uploading, during editing the images|
+|name (metaFields)|string|name of the field during editing|
+|value (metaFields)|numeric|Resize to value|
+|placeholder (metaFields)|string|placeholder for the metaFields|
+
+Now, export the config object.
+
+### Scripting :
+Code location : newdashapp/src/containers/uielements/uppy.js
+
+Code Integration :
+
+```jsx
+const SERVER = null;
+```
+
+All the JS code is done here. User just need to integrate the server in this line.

@@ -1,0 +1,80 @@
+---
+name: Express JWT Implementation
+route: /express-jwt-implementation
+---
+
+# Express JWT Implementation
+
+### Server Side
+
+In this section we will show you how to implement JSON Web Token (JWT) using Node Express framework.
+
+First, Open the isomorphic-express folder in your favorite editor. where you will find the below folder structure
+
+
+
+You can see we have provided and extra server folder where we have implemented our Express JWT Authentication.
+
+To Run the Server follow the below steps,
+
+i) Run yarn at the terminal in the isomorphic-express->server directory. (This will bring all the necessary node modules)
+
+ii) Then Run the yarn start command
+
+if you have done the above steps correctly than you will see the below screen,
+
+
+
+ok, now our server is running successfully at 9000 port,
+
+Lets see what's inside the server folder & what's happening there:
+
+
+From the above snap you can see that theres a server.js & `middlewire.js file where we have implemented the necessary server & middleware coding for the JWT implementation.
+
+If you open the server.js file in the first part you will see we have declared some necessary requirement,
+
+
+
+at line 5 & 6 we have required the configuration from the `config.js` file where have declared the port,secret key, expiration time & `middleware.js` file where we have implemented the Token Authorization, Token Expiration and Error checking.
+
+let's have a look at the `middleware.js` file
+
+
+
+The authenticate function checks the token authorization & token expiration. while the authError function is doing the error checking if something went wrong.
+
+From the server.js line no 13 you can see that the two middlewere authenticate & authError is used by our app at the `\api` route. so whenever you want to access this route you have to generate the valid token.
+
+Now, let's have a look at the later part of the of the server.js file
+
+
+
+you can see here we have implemented the/login related functionality at the beginning of this part and later we have created a
+
+demo testing post request at `/api/demoTesting/route.`
+
+Let's see what we have done at the `/login`
+
+Here we have generated the token in the response when the login is successful.
+
+### Client Side
+
+For the client part if you are already familiar with our Isomorphic codebase than all you have to do is to check the below file,
+
+```
+isomorphic-express/src/helpers/authHelper.js file,
+```
+
+where you can find the necessary client side coding,
+
+you can also check the,
+
+```
+isomorphic-express/src/redux
+```
+
+where we have done the reducer & saga related code for the jwt authentication.
+
+If you are not familiar with the Isomorphic codebase than we suggest you to check our previous section of this documentation.
+

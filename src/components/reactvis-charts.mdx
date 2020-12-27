@@ -1,0 +1,50 @@
+---
+name: ReactVis Charts
+route: /reactvis-charts
+menu: Components
+---
+
+# ReactVis Charts
+
+`Folder path: /src/containers/charts/reactVis`
+
+API LInk: https://github.com/uber/react-vis
+
+Configuration should be supplied from `/src/containers/charts/reactVis/config.js`
+
+The followings are the images of the reactVis chart.
+
+![reactVis-01.png](../images/reactVis-01.png)
+
+These are the charts of Line Series, Line Mark Series, Area Chart Elevated and Stacked Horizontal Bar Chart.
+
+![reactVis-02.png](../images/reactVis-02.png)
+
+These are the Charts of Clustered Stacked Bar Chart, Custom Scales, Circular Grid Lines and Dynamic Programatic Right Edge Hints.
+
+![reactVis-03.png](../images/reactVis-03.png)
+
+These are the Charts of Dynamic Crosshair Scatterplot, simple Radial Chart, Simple Donut Chart and Custom Radius.
+
+![reactVis-04.png](../images/reactVis-04.png)
+
+These are the Charts of Simple Tree Map, Dynamic Tree Map, Basic Sunburst and Animated Sunburst.
+
+![reactVis-05.png](../images/reactVis-05.png)
+
+hese are the Charts of Candle Stick, Complex Chart and Stream Graph.
+
+All the charts have the same format.
+
+```jsx
+<ReactVisChartType {...config} />
+```
+
+Example
+
+```jsx
+<LineSeries {...configs.LineSeries} />
+```
+
+Will be found on `/src/containers/charts/reactVis/config.js`
+

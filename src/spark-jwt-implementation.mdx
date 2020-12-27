@@ -1,0 +1,105 @@
+---
+name: Spark JWT Implementation
+route: /spark-jwt-implementation
+---
+
+# Spark JWT Implementation
+
+### Server Side
+
+In this section we will show you how to implement JSON Web Token (JWT) using Spark java framework.
+
+To implement the framework you have to download [Eclipse](http://www.eclipse.org/downloads/packages/) or [IntelliJ](https://www.jetbrains.com/idea/download/) . Here implementation is done by Eclipse.
+
+First, Open the `isomorphic-servers` folder in your favorite editor. where you will find the below folder structure
+
+
+
+You can see we have provided and extra servers/spark folder where we have implemented our ***Spark JWT Authentication***.
+
+### Docker Implementation
+
+You can directly run it on docker. For that go to `isomorphic-servers/spark` location in terminal and write following codes
+
+```
+docker build -t isoserver .
+docker run -d -p 9000:9000 isoserver
+```
+
+### IDE Implementations
+
+
+To Run the Server follow the below steps,
+
+i) Open your IdE(Here Eclipse. Go to `File->Open Projects File From File Systems` and select `isomorphic-servers/spark` location.
+
+ii) In your editor you will see the project
+
+iii) At last run the application
+
+ok, now our server is running successfully at 9000 port
+
+*** Lets see what's inside the server folder & what's happening there ***
+
+From the above snap you can see that theres a `src/main/javafolder` where all the Java classes are kept.
+
+The Application class holds all the routes
+
+```java
+public static void main(String[] args) {
+        enableDebugScreen();
+        port(9000);
+        before("/api/secret/*", Filters.checkAuthentication);
+
+        get(Path.Web.INTRO, (request, response) -> {
+            return "Isomorphic Spark Jwt Implementation";
+        });
+        // set up login routes
+        post(Path.Web.LOGIN, Users.serveLoginPage);
+        // set up routes
+        post(Path.Api.TEST, Api.demoTest);
+
+        // set up blank routes
+        get("*", ViewUtil.notFound);
+
+        // set up after-filters (called after each get/post)
+        after("*", Filters.addHeaders);
+    }
+```
+
+A basic routing api app is given in Api class(`java/api/api.java`)
+
+```java
+public static Route demoTest = (Request request, Response response) -> {
+        Map<String, String> model = new HashMap<>();
+        model.put("message", "succcesful");
+        return ViewUtil.testResponse(request, response, model);
+
+    };
+```
+
+The User `(java/User)`, `JWTToken(java/util/JWTToken)` and `Filter(java/util/Filter)` classes are used for authorizing and generating data
+
+The dependencies are kept in pom.xml
+
+For more Spark integration see Spark [documentation](http://sparkjava.com/documentation) and [tutorials](http://sparkjava.com/tutorials/)
+
+### Client Side
+
+For the client part if you are already familiar with our Isomorphic codebase than all you have to do is to check the below file,
+
+```
+isomorphic-servers/src/helpers/jwtAuthentication.js file,
+```
+
+where you can find the necessary client side coding,
+
+you can also check the,
+
+```
+isomorphic-servers/src/redux
+```
+
+where we have done the reducer & saga related code for the jwt authentication.
+
+If you are not familiar with the Isomorphic codebase than we suggest you to check our previous section of this documentation.

@@ -1,0 +1,36 @@
+---
+name: Contact
+route: /contact
+menu: Components
+---
+
+# Contact
+
+Folder path: `/src/containers/contacts`
+
+If you want to render Contact component like the the following images for different Views
+
+## Desktop View
+
+
+## Tab View
+
+
+## Mobile View
+
+```jsx
+<ContactList
+          contacts={contacts}
+          seectedId={seectedId}
+          changeContact={changeContact}
+          deleteContact={deleteContact} />
+```
+
+There are some main components
+
+| Component      | Description |
+| ----------- | ----------- |
+| contacts      | Carry all contacts       |
+| deleteContact      | action use to delete contact       |
+| changeContact      | action use to edit contact       |
+

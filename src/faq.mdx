@@ -6,8 +6,22 @@ route: /faq
 # A collapsible section with markdown
 
 <details>
-  <summary>Click to expand!</summary>
+  <summary>Why Monorepo? I read some complaints about your monorepo. My plan is to use this with next.js. Is it still difficult to do so?</summary>
+  Most of our customer complaining about monorepo because it's maybe new to them or don't know the benefits of a monorepo structure.
 
-## Heading
+Monorepo structure is most useful for project where you will have lots of third party integration, different modules, code component sharing, using different package/library version etc. We are building Dashboard application for ages now and what we find most difficult part in a dashboard application is not building or completing it but rather maintaining the application after you have built it.
 
+You will have lots of new requirement, new feature, new integration, changes needed to be made in the core, need to update a library etc. It's not like you can't do this thing in a non monorepo structure but rather whether you want to take the risk of breaking your whole application or investing time to to find what's causing the issue, there are many more issue will will face along the way once you build your admin dashboard app.
+
+We find it absolutely great what monorepo structure offers for a Admin Dashboard app. It helps you to build manageable, scalable, maintainable product in a fastest way possible with a little cost of initial learning time which we find really easy for a developer who have already worked on a basic react redux project.
+
+So, you can see why we have moved to monorepo structure and asking our user to do the same. Also, if you don't want to use monorepo structure and want to quickly build a dashboard app with react, redux/hook structure. we have also added a dedicated app for that as well.
+
+One thing i like to add here is building a simple dashboard app with next js won't give you any extra benefits as you user will mostly access your app after login and you won't need server side rendering for a logged in user but yeah if you have extensive views for logout user then you can choose next.js and this also the place where monorepo structure comes into play. you build your dashboard using basic react, redux/hook and your build your public pages with next.js and you can maintain it within a single application.
+
+Isomorphic - will give you lots of flexibility, you can complete and maintain it like a real large scale project. you can also build minimalistic project with it.
+
+Hope my answers will make sense to our customer why we have chosen Isomorphic.
+
+if you need any other information, feel free to drop some line in our support or in our official mail address.
 </details>
