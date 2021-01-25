@@ -3,6 +3,7 @@ export default {
     menu: [
         "Welcome",
         "Technology We Use",
+        "Pre Installation",
         "Installation",
         "Overview",
         "Non Monorepo Structure",
