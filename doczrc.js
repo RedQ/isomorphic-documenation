@@ -36,10 +36,11 @@ export default {
         "RTL CSS Transformation",
         "Multi Language Support",
         "Express JWT Implementation",
-        "Deployment",
+        // "Deployment",
         "Spark JWT Implementation",
         "Flask JWT",
         "Django JWT",
-        "FAQ"
+        // { name: "Deployment", menu: ["AWS"] },
+        "FAQ",
     ],
 };
