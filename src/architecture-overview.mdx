@@ -1,9 +1,24 @@
 ---
-name: Overview
-route: /overview
+name: Architecture Overview
+route: /architecture-overview
 ---
 
-# Overview
+# Architecture Overview
+
+## Monorepo Architectue:
+
+A Monorepo keeps everything in one repository. For Isomorphic, there are many repositories, and to maintain all of them, we used Monorepo architecture. On Isomorphic, there are several repositories which are shared the same component directory from the shared directory.
+
+You can check this article to understand Monorepo architecture,
+
+https://www.perforce.com/blog/vcs/what-monorepo
+https://www.toptal.com/front-end/guide-to-monorepos
+https://en.wikipedia.org/wiki/Monorepo
+
+## Non-Monorepo Architecture:
+
+As Isomorphic build using Monorepo architechture, that doesn't mean you can't use the Isomorphic with a traditional approach. We add both and Monorepo and non-Monorepo packages so that you can use the project with your preferred system.
+
 
 Isomorphic Comes With multiple boilerplate and configurations for different use cases.
 

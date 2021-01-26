@@ -5,7 +5,7 @@ export default {
         "Technology We Use",
         "Pre Installation",
         "Installation",
-        "Overview",
+        "Architecture Overview",
         "Non Monorepo Structure",
         "Monorepo Packages Structure",
         "Getting Started",
