@@ -1,7 +1,7 @@
 ---
 name: Authentication
 route: /authentication
-menu: Components
+menu: Getting Started
 ---
 
 # Authentication
@@ -22,11 +22,13 @@ Folder path: /src/components/firebase/
 
 If you want a login button like the following image given bellow.
 
-![firebase-1](../images/firebase-1.png)
+![firebase-1](./images/firebase-1.png)
 
 On the `onclick` function of the button You can render a form with two input fields(one for Email and one for Password). And passing those credentials through the Firebase Api, a user can be get signed up or singed in. The following code is connects the User inputs to the Firebase Api
 
-`Firebase.login(Firebase.EMAIL, { email, password })`
+```js
+Firebase.login(Firebase.EMAIL, { email, password })
+```
 
 
 And you can use basic Javascript promise methods like then() or catch() methods and use the Firebase returned data to do your desired operations like the following code
@@ -47,15 +49,16 @@ Path to the config file: `/src/config.js`
 
 The following are the important Credentials you must provide in order to make Firebase Authentication work.
 
-The following are the important Credentials you must provide in order to make Firebase Authentication work.
 
 ** Keys **
+```
 - apiKey
 - authDomain
 - databaseURL
 - projectId
 - storageBucket
 - messagingSenderId
+```
 
 Currently We are providing Firebase authentication through Email and password only. You can also integrate Social Logins (Facebook, Google, Github, Twitter) with Firebase. The code will be found on the following Path: `Folder path: /src/helpers/firebase/`
 
@@ -71,7 +74,7 @@ And the code is like the following.
 
 After all those Works clicking the Login with Firebase button A prompt Window like the following will open
 
-![firebase-2](../images/firebase-2.png)
+![firebase-2](./images/firebase-2.png)
 
 
 ## Auth0
@@ -84,7 +87,7 @@ Folder path: /src/helpers/auth0/
 
 If you want a login button like the following image given bellow.
 
-![auth0](../images/auth0.gif)
+![auth0](./images/auth0.gif)
 
 
 Just need to Place a button and On the onclick function of the button You can render the following functions provided by Auth0 itself.
@@ -98,11 +101,11 @@ Just need to Place a button and On the onclick function of the button You can re
 | on()      | 	Listening for events       |
 | logout()      | Log out the user       |
 
-We are using the firebase [Lock](https://auth0.com/lock) widget.
+We are using the Auth0 [Lock](https://auth0.com/lock) widget.
 
 In the folder path `/src/helpers/auth0/` there is a Auth0Helper class that uses all the functions.
 
-To Use the Firebase Api you need to configure your app to the Auth0-Official documentation first. And put your app credentials to the config file of our app.
+To Use the Auth0 Api you need to configure your app to the Auth0-Official documentation first. And put your app credentials to the config file of our app.
 
 Path to the config file: `src/settings/index.js`
 
@@ -114,4 +117,4 @@ The following are the important Credentials you must provide in order to make Fi
 
 After all those Works clicking the Login with Auth0 button A prompt Window like the following will open
 
-![auth0-2](../images/auth0-2.png)
+![auth0-2](./images/auth0-2.png)

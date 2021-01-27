@@ -8,7 +8,7 @@ export default {
         "Architecture Overview",
         "Non Monorepo Structure",
         "Monorepo Packages Structure",
-        "Getting Started",
+        {name: "Getting Started", menu: ["Authentication"]},
         "AsyncComponent",
         {
             name: "Components",
