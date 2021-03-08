@@ -1,4 +1,6 @@
 export default {
+    title: "Isomorphic Documentation",
+    ignore: ["README.md"],
     typescript: true,
     menu: [
         "Welcome",
@@ -8,7 +10,7 @@ export default {
         "Architecture Overview",
         "Non Monorepo Structure",
         "Monorepo Packages Structure",
-        {name: "Getting Started", menu: ["Authentication"]},
+        { name: "Getting Started", menu: ["Authentication"] },
         "Customization",
         "AsyncComponent",
         {
